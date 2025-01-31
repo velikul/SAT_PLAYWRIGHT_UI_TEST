@@ -10,4 +10,4 @@ Feature: Login Feature
   Scenario: Cannot Login With Blank Email And Password
     When enters the invalid credentials "" and ""
     Then "Please enter your Email Address" message is displayed
-    And "Please enter your passwor" message is displayed
+    And "Please enter your password" message is displayed

@@ -9,7 +9,7 @@ var options = {
   name: "Smart Annotator",
   reportSuiteAsScenarios: true,
   scenarioTimestamp: true,
-  launchReport: true,
+  launchReport: false,
   screenshotDirectory: "reports/",
   metadata: {
     browser: "",
