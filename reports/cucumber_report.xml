@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
-<testsuite name="Cucumber" time="5.172" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-31T10:13:18.162Z">
-  <testcase classname="Login Feature" name="Can Login With Valid Credentials" time="3.011">
+<testsuite name="Cucumber" time="5.432" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-31T11:31:10.916Z">
+  <testcase classname="Login Feature" name="Can Login With Valid Credentials" time="3.426">
     <system-out><![CDATA[Given the user is on the login page.........................................passed
 When enters valid credentials...............................................passed
 Then the user is logged in..................................................passed]]></system-out>
   </testcase>
-  <testcase classname="Login Feature" name="Cannot Login With Blank Email And Password" time="1.815">
+  <testcase classname="Login Feature" name="Cannot Login With Blank Email And Password" time="1.681">
     <system-out><![CDATA[Given the user is on the login page.........................................passed
 When enters the invalid credentials "" and ""...............................passed
 Then "Please enter your Email Address" message is displayed.................passed
