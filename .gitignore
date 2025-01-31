@@ -1,0 +1,7 @@
+node_modules/
+/reports/
+/playwright/.cache/
+cucumber-report.html
+cucumber-report.json
+cucumber-report.xml
+index.ts
