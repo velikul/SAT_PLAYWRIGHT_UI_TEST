@@ -1,1 +1,0 @@
-Size(197.88); Area(13971); Elongation factor(0.668051); Drink available(0) Food available(1) Feeder present(0) Bedding present(1) Wall present(0) FrameRate(30.0152) SampleInterval(1) Resolution(1423, 995) UseInternalAsm(0)
