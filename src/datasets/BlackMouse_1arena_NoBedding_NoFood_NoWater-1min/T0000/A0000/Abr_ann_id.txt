@@ -1,0 +1,10 @@
+150;rest
+70;walk
+120;dig
+35;drink
+30;eat
+40;groom
+10;rear-unsup
+20;rear-wall
+160;sniff
+210;jump

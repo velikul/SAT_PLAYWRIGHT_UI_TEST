@@ -1,5 +1,5 @@
 node_modules/
-/reports/
+reports
 /playwright/.cache/
 cucumber-report.html
 cucumber-report.json

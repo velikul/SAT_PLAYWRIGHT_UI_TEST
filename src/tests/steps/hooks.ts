@@ -8,6 +8,8 @@ import {
 } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium, firefox } from "playwright";
 import dotenv from "dotenv";
+import fs from "fs";
+import path from "path";
 
 setDefaultTimeout(1000 * 2 * 60);
 
@@ -58,6 +60,15 @@ Before(async function (scenario) {
   );
   bCtx = await browser.newContext({ viewport: null, javaScriptEnabled: true });
   page = await bCtx.newPage();
+  const reportsDir = "./reports";
+  
+  if (fs.existsSync(reportsDir)) {
+    fs.readdirSync(reportsDir).forEach(file => {
+      if (file.endsWith(".png")) {
+        fs.unlinkSync(path.join(reportsDir, file));
+      }
+    });
+  }
 });
 
 After(async function (scenario) {
