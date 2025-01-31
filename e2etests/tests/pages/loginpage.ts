@@ -25,7 +25,7 @@ export default class LoginPage extends BasePage {
   }
 
   async gotoLoginPage() {
-    await this.page.goto(process.env.url!);
+    await this.page.goto(process.env.app_url!);
   }
 
   async loginToApp() {

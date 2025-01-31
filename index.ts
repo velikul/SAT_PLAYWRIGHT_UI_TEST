@@ -19,9 +19,11 @@ var options = {
 };
 
 function generateHtml() {
-  dotenv.config();
+  dotenv.config({
+    path: `${process.cwd()}/config/.env.${process.env.npm_config_env}`
+  });
   options.metadata.browser = process.env.browser!;
-  options.metadata.url = process.env.url!;
+  options.metadata.url = process.env.app_url!;
   reporter.generate(options);
 }
 

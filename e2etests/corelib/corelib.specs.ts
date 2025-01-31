@@ -9,7 +9,7 @@ import {
   Status,
 } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium, firefox } from "playwright";
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 
 setDefaultTimeout(1000 * 2 * 60);
 
@@ -18,7 +18,9 @@ let bCtx: BrowserContext;
 let page: Page;
 
 BeforeAll(async function () {
-  dotenv.config();
+  dotenv.config({
+        path: `${process.cwd()}/config/.env.${process.env.npm_config_env ?? 'tst'}`
+  });
   let browserType = process.env.browser ?? "chrome";
 
   switch (browserType) {

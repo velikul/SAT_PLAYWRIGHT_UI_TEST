@@ -3,21 +3,21 @@ import { Page, Locator } from "playwright";
 
 export default class BasePage {
   protected page: Page;
-  protected log:ICreateAttachment;
+  protected log: ICreateAttachment;
 
-  constructor(page: Page, log:ICreateAttachment) {
-      this.page = page;
-      this.log=log;
+  constructor(page: Page, log: ICreateAttachment) {
+    this.page = page;
+    this.log = log;
   }
 
   async click(locator: Locator) {
     await locator.click();
-    console.log(`Clicked on ${locator}`)
+    console.log(`Clicked on ${locator}`);
   }
 
   async enterText(locator: Locator, data: string) {
     await locator.fill(data);
-    console.log(`${data} is entered to ${locator}`)
+    console.log(`${data} is entered to ${locator}`);
   }
 
   getLocator(selector: string): Locator {
