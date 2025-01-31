@@ -4,8 +4,6 @@ import {
   AfterAll,
   Before,
   After,
-  BeforeStep,
-  AfterStep,
   Status,
 } from "@cucumber/cucumber";
 import { Browser, BrowserContext, Page, chromium, firefox } from "playwright";

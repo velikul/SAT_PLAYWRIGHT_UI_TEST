@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
-<testsuite name="Cucumber" time="18.35" tests="2" skipped="0" failures="1" errors="0" timestamp="2025-01-31T13:21:27.775Z">
-  <testcase classname="Login Feature" name="Can Login With Valid Credentials" time="2.959">
+<testsuite name="Cucumber" time="6.798" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-31T13:31:18.014Z">
+  <testcase classname="Login Feature" name="Can Login With Valid Credentials" time="3.165">
     <system-out><![CDATA[Given the user is on the login page.........................................passed
 When enters valid credentials...............................................passed
 Then the user is logged in..................................................passed]]></system-out>
   </testcase>
-  <testcase classname="Login Feature" name="Cannot Login With Blank Email And Password" time="2.035">
-    <failure type="AssertionError" message="Unknown error message: Please enter your passwor"><![CDATA[    at World.<anonymous> (C:\Users\vel\PlaywrightProjects\SAT_Playwright_UI_Test\e2etests\tests\steps\loginsteps.specs.ts:53:14)]]></failure>
+  <testcase classname="Login Feature" name="Cannot Login With Blank Email And Password" time="3.302">
     <system-out><![CDATA[Given the user is on the login page.........................................passed
 When enters the invalid credentials "" and ""...............................passed
 Then "Please enter your Email Address" message is displayed.................passed
-And "Please enter your passwor" message is displayed........................failed]]></system-out>
+And "Please enter your password" message is displayed.......................passed]]></system-out>
   </testcase>
 </testsuite>

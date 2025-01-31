@@ -1,7 +1,7 @@
 import { Given, When, Then, setDefaultTimeout } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import assert from "assert";
-import { getPage } from "../../corelib/corelib.specs";
+import { getPage } from "./hooks";
 import LoginPage from "../pages/loginpage";
 
 let loginPage: LoginPage;
