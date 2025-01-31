@@ -1,0 +1,12 @@
+bin
+docs
+exports
+lib
+node_modules
+reports
+tmp
+
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
+UPGRADING.md
