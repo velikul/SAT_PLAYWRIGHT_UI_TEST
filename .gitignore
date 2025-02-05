@@ -6,3 +6,5 @@ cucumber-report_bootstrap.html
 cucumber-report.json
 cucumber-report.xml
 index.ts
+@rerun.txt
+*.png

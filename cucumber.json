@@ -1,5 +1,6 @@
 {
     "default": {
+        "tags":"",
         "dryRun": false,
         "formatOptions": {
             "snippetInterface": "aysnc-await"
@@ -25,7 +26,10 @@
             [
                 "html",
                 "reports/cucumber_report.html"
-            ]
-        ]
+            ],
+            "rerun:@rerun.txt"
+        ],
+        "parallel": 1,
+        "retry":1
     }
 }

@@ -19,7 +19,7 @@ let page: Page;
 
 BeforeAll(async function () {
   dotenv.config({
-        path: `${process.cwd()}/config/.env.${process.env.npm_config_env ?? 'tst'}`
+    path: `${process.cwd()}/config/.env.${process.env.env ?? "tst"}`,
   });
   let browserType = process.env.browser ?? "chrome";
 
@@ -61,9 +61,9 @@ Before(async function (scenario) {
   bCtx = await browser.newContext({ viewport: null, javaScriptEnabled: true });
   page = await bCtx.newPage();
   const reportsDir = "./reports";
-  
+
   if (fs.existsSync(reportsDir)) {
-    fs.readdirSync(reportsDir).forEach(file => {
+    fs.readdirSync(reportsDir).forEach((file) => {
       if (file.endsWith(".png")) {
         fs.unlinkSync(path.join(reportsDir, file));
       }
