@@ -6,29 +6,31 @@ import LoginPage from "../pages/loginpage";
 
 let loginPage: LoginPage;
 
+// Step to navigate to the login page
 Given("the user is on the login page", async function () {
-  loginPage = new LoginPage(getPage(),this.attach);
-  await loginPage.gotoLoginPage();
+  loginPage = new LoginPage(getPage(), this.attach);
+  await loginPage.gotoLoginPage();// Navigate to the login page
 });
 
+// Step to enter valid credentials
 When("enters valid credentials", async function () {
-  await loginPage.loginToApp();
+  await loginPage.signInAsTester();// Perform login action
 });
 
+// Step to verify the user is logged in
 Then("the user is logged in", async function () {
-  await expect(getPage()).toHaveTitle("SmartAnnotator");
+  await expect(getPage()).toHaveTitle("SmartAnnotator"); // Assert that the page title is "SmartAnnotator" after login
   this.attach(await getPage().title());
 });
 
-When(
-  "enters the invalid credentials {string} and {string}",
+// Step to enter the invalid credentials
+When("enters the invalid credentials {string} and {string}",
   async function (email, password) {
-    loginPage.enterText(loginPage.usernameInput, email);
-    loginPage.enterText(loginPage.passwordInput, password);
-    await loginPage.signInButton.click();
+    loginPage.signIn(email, password);// Perform login action
   }
 );
 
+// Step to verify error messages
 Then("{string} message is displayed", async function (errorMessage) {
   switch (errorMessage) {
     case "Please enter your Email Address":
@@ -53,3 +55,4 @@ Then("{string} message is displayed", async function (errorMessage) {
       assert.fail("Unknown error message: " + errorMessage);
   }
 });
+

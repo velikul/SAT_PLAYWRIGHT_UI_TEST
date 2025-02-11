@@ -28,9 +28,15 @@ export default class LoginPage extends BasePage {
     await this.page.goto(process.env.app_url!);
   }
 
-  async loginToApp() {
+  async signInAsTester() {
     await this.enterText(this.usernameInput, process.env.user_name!);
     await this.enterText(this.passwordInput, process.env.password!);
     await this.click(this.signInButton);
+  }
+  
+  async signIn(email: string, password: string) {
+    await this.enterText(this.usernameInput, email);
+    await this.enterText(this.passwordInput, password);
+    await this.signInButton.click();
   }
 }
