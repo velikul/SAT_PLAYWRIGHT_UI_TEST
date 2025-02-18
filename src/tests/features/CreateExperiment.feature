@@ -1,4 +1,3 @@
-@Test
 Feature: Create Experiment Feature
 
   Background:

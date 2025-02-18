@@ -11,6 +11,9 @@ export default class CreateExperimentPage extends BasePage {
   public skipUploadButton: Locator;
   public createExperimentPageTitle: Locator;
   public closeButton: Locator;
+  public uniqueName: string;
+  public uniqueDescription: string;
+  
 
   constructor(page: Page, log: ICreateAttachment) {
     super(page, log);
@@ -21,9 +24,25 @@ export default class CreateExperimentPage extends BasePage {
     this.skipUploadButton = page.locator("#skip-upload-button");
     this.createExperimentPageTitle = page.locator("#modal-modal-title");
     this.closeButton = page.locator("//*[@data-testid='CancelOutlinedIcon']");
+    this.uniqueName = "";
+    this.uniqueDescription = "";
   }
 
   async verifyDisplayElementWithText(expName: string) {
     await expect(this.getElementWithText(expName)).toBeVisible();
+  }
+
+  async writeUniqueNameAndDescription() {
+    const now = new Date();
+    now.setHours(now.getHours() + 1);
+    const timestamp = now.toISOString().replace(/[:.]/g, "-");
+  
+    this.uniqueName = `Experiment_${timestamp}`;
+    this.uniqueDescription = `This is a test experiment created at ${timestamp}`;
+     
+    await this.experimentNameInput.fill(this.uniqueName);
+    await this.experimentDescriptionInput.fill(
+      this.uniqueDescription
+    );
   }
 }

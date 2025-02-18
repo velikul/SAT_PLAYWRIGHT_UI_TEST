@@ -13,6 +13,7 @@ import path from "path";
 import LoginPage from "../pages/loginpage";
 import HomePage from "../pages/homepage";
 import CreateExperimentPage from "../pages/createexperimentpage";
+import DetailsPage from "../pages/detailspage";
 
 setDefaultTimeout(1000 * 2 * 60);
 
@@ -68,7 +69,7 @@ Before(async function (scenario) {
   this.homePage = new HomePage(page, this.attach);
   this.loginPage = new LoginPage(page, this.attach);
   this.createExperimentPage = new CreateExperimentPage(page, this.attach);
-
+  this.detailsPage = new DetailsPage(page, this.attach);
 
   if (fs.existsSync(reportsDir)) {
     fs.readdirSync(reportsDir).forEach((file) => {

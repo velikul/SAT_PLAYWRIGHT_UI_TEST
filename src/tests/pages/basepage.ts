@@ -18,10 +18,6 @@ export default class BasePage {
     await locator.fill(data);
   }
 
-  async pause() {
-    await this.page.pause();
-  }
-
   getLocator(selector: string): Locator {
     return this.page.locator(selector);
   }

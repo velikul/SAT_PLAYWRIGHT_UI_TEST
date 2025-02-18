@@ -11,6 +11,7 @@ export default class HomePage extends BasePage {
   public deleteConfirmButton: Locator;
   public firstExpName: Locator;
   public expNames: Locator;
+  public submitUploadButton: Locator;
   public experimentListSelector: string = "//*[@id='experiment-list']";
 
   constructor(page: Page, log: ICreateAttachment) {
@@ -27,6 +28,7 @@ export default class HomePage extends BasePage {
     this.deleteConfirmButton = page.locator("(//*[@role='dialog']//button)[2]");
     this.firstExpName = page.locator("(//*[@id='experiment-list']//a)[1]");
     this.expNames = page.locator("//*[@id='experiment-list']//a");
+    this.submitUploadButton = page.locator("#submit-upload-button")
   }
 
   getExperimentDeleteButton(expName: string): Locator {
