@@ -12,15 +12,22 @@ export default class BasePage {
 
   async click(locator: Locator) {
     await locator.click();
-    console.log(`Clicked on ${locator}`);
   }
 
   async enterText(locator: Locator, data: string) {
     await locator.fill(data);
-    console.log(`${data} is entered to ${locator}`);
+  }
+
+  async pause() {
+    await this.page.pause();
   }
 
   getLocator(selector: string): Locator {
     return this.page.locator(selector);
   }
+
+  getElementWithText(elemText: string): Locator {
+    return this.page.locator(`//*[text()='${elemText}']`);
+  }
+  
 }
