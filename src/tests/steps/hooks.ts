@@ -10,6 +10,9 @@ import { Browser, BrowserContext, Page, chromium, firefox } from "playwright";
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
+import LoginPage from "../pages/loginpage";
+import HomePage from "../pages/homepage";
+import CreateExperimentPage from "../pages/createexperimentpage";
 
 setDefaultTimeout(1000 * 2 * 60);
 
@@ -61,6 +64,11 @@ Before(async function (scenario) {
   bCtx = await browser.newContext({ viewport: null, javaScriptEnabled: true });
   page = await bCtx.newPage();
   const reportsDir = "./reports";
+
+  this.homePage = new HomePage(page, this.attach);
+  this.loginPage = new LoginPage(page, this.attach);
+  this.createExperimentPage = new CreateExperimentPage(page, this.attach);
+
 
   if (fs.existsSync(reportsDir)) {
     fs.readdirSync(reportsDir).forEach((file) => {

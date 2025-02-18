@@ -1,6 +1,6 @@
 {
     "default": {
-        "tags":"@Test",
+        "tags":"",
         "dryRun": false,
         "formatOptions": {
             "snippetInterface": "aysnc-await"
