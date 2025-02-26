@@ -9,8 +9,7 @@ export default class DetailsPage extends BasePage {
 
   constructor(page: Page, log: ICreateAttachment) {
     super(page, log);
-    this.dataUploadIcon = page.locator("//*[@data-testid='CloudUploadOutlinedIcon']");
+    this.dataUploadIcon = page.locator("//*[@aria-label= 'Upload data to your experiment']");
     this.fileUploadArea = page.locator("#dropzone-input");
-
   }
 }

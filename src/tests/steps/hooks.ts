@@ -14,8 +14,9 @@ import LoginPage from "../pages/loginpage";
 import HomePage from "../pages/homepage";
 import CreateExperimentPage from "../pages/createexperimentpage";
 import DetailsPage from "../pages/detailspage";
+import SetupPage from "../pages/setuppage";
 
-setDefaultTimeout(1000 * 2 * 60);
+setDefaultTimeout(1000 * 5 * 60);
 
 let browser: Browser;
 let bCtx: BrowserContext;
@@ -70,6 +71,8 @@ Before(async function (scenario) {
   this.loginPage = new LoginPage(page, this.attach);
   this.createExperimentPage = new CreateExperimentPage(page, this.attach);
   this.detailsPage = new DetailsPage(page, this.attach);
+  this.setupPage = new SetupPage(page, this.attach);
+
 
   if (fs.existsSync(reportsDir)) {
     fs.readdirSync(reportsDir).forEach((file) => {

@@ -25,5 +25,13 @@ export default class BasePage {
   getElementWithText(elemText: string): Locator {
     return this.page.locator(`//*[text()='${elemText}']`);
   }
-  
+
+  async clickWithTextName(elemText: string): Promise<void> {
+    const element = this.getElementWithText(elemText);
+
+    if (await element.isEnabled()) {
+      await element.click();
+    }
+  }
 }
+

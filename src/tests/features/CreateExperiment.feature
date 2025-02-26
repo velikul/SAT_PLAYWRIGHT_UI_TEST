@@ -20,7 +20,7 @@ Feature: Create Experiment Feature
     When deletes name
     Then sees "Please enter a name" text on the page
     And closes the create experiment page
-  
+
   Scenario Outline: Cannot Create Experiment With The Same Name
 
     And types "<name>" as name

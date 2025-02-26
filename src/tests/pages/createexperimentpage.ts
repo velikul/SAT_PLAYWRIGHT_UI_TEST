@@ -13,11 +13,14 @@ export default class CreateExperimentPage extends BasePage {
   public closeButton: Locator;
   public uniqueName: string;
   public uniqueDescription: string;
-  
+  public fileUploadArea: Locator;
+  public submitUploadButton: Locator;
 
   constructor(page: Page, log: ICreateAttachment) {
     super(page, log);
-    this.createExperimentButton = page.locator("#experiment-create-button-ethovision");
+    this.createExperimentButton = page.locator(
+      "#experiment-create-button-ethovision"
+    );
     this.experimentNameInput = page.locator("#name-input");
     this.experimentDescriptionInput = page.locator("#description-input");
     this.submitButton = page.locator("#submit-button");
@@ -26,6 +29,8 @@ export default class CreateExperimentPage extends BasePage {
     this.closeButton = page.locator("//*[@data-testid='CancelOutlinedIcon']");
     this.uniqueName = "";
     this.uniqueDescription = "";
+    this.fileUploadArea = page.locator("#dropzone-input");
+    this.submitUploadButton = page.locator("#submit-upload-button");
   }
 
   async verifyDisplayElementWithText(expName: string) {
@@ -36,13 +41,11 @@ export default class CreateExperimentPage extends BasePage {
     const now = new Date();
     now.setHours(now.getHours() + 1);
     const timestamp = now.toISOString().replace(/[:.]/g, "-");
-  
+
     this.uniqueName = `Experiment_${timestamp}`;
     this.uniqueDescription = `This is a test experiment created at ${timestamp}`;
-     
+
     await this.experimentNameInput.fill(this.uniqueName);
-    await this.experimentDescriptionInput.fill(
-      this.uniqueDescription
-    );
+    await this.experimentDescriptionInput.fill(this.uniqueDescription);
   }
 }

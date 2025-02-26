@@ -1,6 +1,7 @@
 import { When, Then, Given } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import { getPage } from "./hooks";
+import path from "path";
 
 Then("clicks on create experiment button", async function () {
   await this.createExperimentPage.createExperimentButton.click();
@@ -19,7 +20,9 @@ Then("clicks on skip upload button", async function () {
 });
 
 Then("sees the first name as the unique experiment name", async function () {
-  await expect(this.homePage.firstExpName).toHaveText(this.createExperimentPage.uniqueName);
+  await expect(this.homePage.firstExpName).toHaveText(
+    this.createExperimentPage.uniqueName
+  );
 });
 
 Then("sees the first name as {string}", async function (name: string) {
@@ -27,7 +30,9 @@ Then("sees the first name as {string}", async function (name: string) {
 });
 
 Then("delete the unique name experiment", async function () {
-  await this.homePage.deleteExperimentWithName(this.createExperimentPage.uniqueName);
+  await this.homePage.deleteExperimentWithName(
+    this.createExperimentPage.uniqueName
+  );
 });
 
 Then(
@@ -85,27 +90,47 @@ Then("waits for the experiment list to load", async function () {
   await this.homePage.waitForExperimentListToLoad();
 });
 
-Given('the user creates experiment with a unique name', async function () {
+Given("the user creates experiment with a unique name", async function () {
   await this.createExperimentPage.createExperimentButton.click();
   await this.createExperimentPage.writeUniqueNameAndDescription();
   await this.createExperimentPage.submitButton.click();
   await this.createExperimentPage.skipUploadButton.click();
-  await expect(this.homePage.firstExpName).toHaveText(this.createExperimentPage.uniqueName);
-})
+  await expect(this.homePage.firstExpName).toHaveText(
+    this.createExperimentPage.uniqueName
+  );
+});
 
-Given('clicks on upload completed close button', async function () {
+Given("clicks on upload completed close button", async function () {
   await this.homePage.submitUploadButton.click();
-})
+});
 
-Given('selects the first experiment', async function () {
+Given("selects the first experiment", async function () {
   await this.homePage.firstExpName.click();
-  await getPage().pause();
-})
+});
 
-Then('clicks on upload data icon', async function ()  {
+Then("clicks on upload data icon", async function () {
+  await this.detailsPage.dataUploadIcon.waitFor({
+    state: "visible",
+    timeout: 5000,
+  });
   await this.detailsPage.dataUploadIcon.click();
-})
+});
 
-Then('upload one minute experiment', async function () {
-  
-})
+Then("upload one minute experiment", async function () {
+  const projectPath = process.cwd();
+  const filePath = "src\\datasets\\One Minute No Food";
+  const fullPath = path.join(projectPath, filePath);
+
+  await this.createExperimentPage.fileUploadArea.setInputFiles(fullPath);
+  await this.createExperimentPage.submitUploadButton.click();
+});
+
+Then(
+  "clicks on {string} navigation menu button",
+  async function (navbarItem: string) {
+    await this.homePage
+      .navbarElements(navbarItem)
+      .waitFor({ state: "visible", timeout: 30000 });
+    await this.homePage.navbarElements(navbarItem).click();
+  }
+);

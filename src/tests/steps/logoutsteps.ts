@@ -42,3 +42,8 @@ Then("a new window is opened", async function () {
 Then("can see the title {string}", async function (expectedTitle) {
   await expect(newPage).toHaveTitle(expectedTitle); // Check if the new page has the expected title
 });
+
+
+
+
+

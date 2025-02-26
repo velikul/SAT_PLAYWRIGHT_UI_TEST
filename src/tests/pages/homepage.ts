@@ -12,7 +12,9 @@ export default class HomePage extends BasePage {
   public firstExpName: Locator;
   public expNames: Locator;
   public submitUploadButton: Locator;
-  public experimentListSelector: string = "//*[@id='experiment-list']";
+  public experimentList: Locator;
+  public cookiesConsentButton: Locator;
+  public uploadCloseButton: Locator;
 
   constructor(page: Page, log: ICreateAttachment) {
     super(page, log);
@@ -28,7 +30,10 @@ export default class HomePage extends BasePage {
     this.deleteConfirmButton = page.locator("(//*[@role='dialog']//button)[2]");
     this.firstExpName = page.locator("(//*[@id='experiment-list']//a)[1]");
     this.expNames = page.locator("//*[@id='experiment-list']//a");
-    this.submitUploadButton = page.locator("#submit-upload-button")
+    this.submitUploadButton = page.locator("#submit-upload-button");
+    this.experimentList = page.locator("//*[@id='experiment-list']"); 
+    this.cookiesConsentButton = page.locator("#rcc-confirm-button");
+    this.uploadCloseButton = page.locator("#close-upload-tracker-button");
   }
 
   getExperimentDeleteButton(expName: string): Locator {
@@ -53,9 +58,13 @@ export default class HomePage extends BasePage {
   }
   async waitForExperimentListToLoad(): Promise<void> {
     try {
-      await this.page.waitForSelector(this.experimentListSelector, { state: 'visible', timeout: 5000 });
+      await this.experimentList.waitFor({ state: 'visible', timeout: 5000 });
     } catch (error) {
       throw new Error('Experiment list cannot be loaded in expected time');
     }
   }
+
+  navbarElements(name: string): Locator {
+    return this.page.locator(`#navbar-${name.toLowerCase()}`);
+  }  
 }
